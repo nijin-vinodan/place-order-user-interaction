@@ -1,0 +1,44 @@
+/** -------------------------- START : Variables --------------------------- */
+
+$black-dark : #000;
+$grey-dark : #444333;
+$white-pure : #FFFFFF;
+$white-smoke : #EEEEEE;
+$blue-light : #6A93D2;
+$blue-dark : #567FBD;
+
+$wrapper-background: #FFFFFF;
+$button-color: #FC883A;
+$button-shade-color: #D66E2A;
+$link-color: #6A93D2;
+
+/** ---------------------------- END : Variables --------------------------- */
+
+
+/** ------------------------------ START : Mixin --------------------------- */
+
+@mixin box($width, $height:$width) {
+    width: $width;
+    height: $height;
+}
+
+@mixin oval($radius, $borderRadius: 50%) {
+    @include box($radius);
+    border-radius: $borderRadius;
+}
+
+@mixin flex($alignItems:center, $justifyContent:center) {
+    display: flex;
+    align-items: $alignItems;
+    justify-content: $justifyContent;
+}
+
+@mixin positionAbsolute($top:auto, $left:auto, $bottom:auto, $right:auto) {
+    position: absolute;
+    top: $top;
+    left: $left;
+    bottom: $bottom;
+    right: $right;
+}
+
+/** ------------------------------ END : Mixin --------------------------- */

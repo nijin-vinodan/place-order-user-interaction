@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+body {
+    @include flex;
+    height: 100vh;
+    background: linear-gradient(60deg, $blue-light, $blue-dark);
+}
+
+.mobile {
+    position: relative;
+    @include box(300px, 630px);
+    border-radius: 35px;
+    background: $white-pure;
+    overflow: hidden;
+
+    .notification {
+        @include positionAbsolute(auto, 0, 0);
+        @include flex;
+        display: none;
+        @include box(100%, 40px);
+        background-color: $grey-dark;
+        color: $white-pure;
+        font-size: 14px;
+    }
+}

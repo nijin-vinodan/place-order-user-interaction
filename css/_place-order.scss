@@ -1,0 +1,223 @@
+/** ---------------- START : Place Order Interaction ------------- */
+.place-order {
+    position: relative;
+    width: 100%;
+    padding: 5px 5px 17px;
+    overflow: hidden;
+
+    &:before,
+    &:after {
+        content: '';
+        @include positionAbsolute(auto, 0, -5px);
+        z-index: 4;
+        @include box(100%, 4px);
+        border-radius: 5px;
+        background-image: linear-gradient(to right, rgba(230, 230, 230, 0), rgba(230, 230, 230, 1), rgba(230, 230, 230, 0), rgba(230, 230, 230, 1));
+    }
+
+    &:after {
+        left: 100%;
+    }
+
+    .truck {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .body-top {
+            display: flex;
+            align-items: flex-end;
+            width: 100%;
+
+            .engine {
+                @include positionAbsolute(auto, auto, auto, 43px);
+                @include box(40px);
+                background: $blue-light;
+                transition: 0.5s;
+
+                &:after {
+                    content: '';
+                    @include positionAbsolute;
+                    @include box(25px, 0);
+                    border-bottom: 15px solid $blue-light;
+                    border-right: 15px solid $wrapper-background;
+                }
+
+                &:before {
+                    content: '';
+                    @include positionAbsolute(10px, auto, auto, 0);
+                    @include box(10px, 20px);
+                    background: $black-dark;
+                }
+            }
+
+            .load {
+                position: relative;
+                z-index: 10;
+                width: 100%;
+                min-height: 50px;
+                background: $button-color;
+                text-align: center;
+                color: $white-pure;
+                letter-spacing: 1px;
+                cursor: pointer;
+                overflow: hidden;
+
+                .action {
+                    @include positionAbsolute(0, 0);
+                    @include box(100%);
+                    padding: 15px 25px;
+                }
+
+                &:before,
+                &:after {
+                    content: '';
+                    @include positionAbsolute(-100%, 15%);
+                    @include box(30px, 60%);
+                    border-left: 15px double $button-shade-color;
+                    border-right: 15px double $button-shade-color;
+                }
+
+                &:after {
+                    left: auto;
+                    right: 15%;
+                }
+
+                .action,
+                &:before,
+                &:after {
+                    transition: top .5s;
+                }
+            }
+        }
+
+        .body-base {
+            position: relative;
+            top: -40px;
+            @include box(100%, 20px);
+            background: $grey-dark;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 3px;
+            transition: 0.5s;
+
+            &:before,
+            &:after {
+                content: '';
+                @include positionAbsolute(auto, 45px, -15px);
+                @include oval(30px);
+                background: $wrapper-background;
+            }
+
+            &:after {
+                left: auto;
+                right: 10px;
+            }
+
+            .wheel {
+                @include positionAbsolute(auto, 47px, -13px);
+                z-index: 3;
+                @include flex;
+                @include oval(26px);
+                background: #4E5066;
+                border: 2px solid #3A3E4B;
+
+                &:before {
+                    content: '';
+                    @include oval(16px);
+                    border: 1px dashed $white-pure;
+                }
+
+                &:after {
+                    content: '';
+                    @include positionAbsolute(6px, 6px);
+                    @include oval(10px);
+                    background: $white-pure;
+                }
+
+                &:nth-child(2) {
+                    left: auto;
+                    right: 12px;
+                }
+            }
+        }
+    }
+
+    &.order-placed {
+        .truck {
+            .body-top {
+
+                .engine {
+                    right: 0;
+                    transition: right 0.75s;
+                    transition-delay: 0.75s;
+                }
+
+                .load {
+                    width: calc(100% - 43px);
+                    transition: width 0.5s;
+                    transition-delay: 0.5s;
+
+                    .action {
+                        top: 100%;
+                    }
+
+                    &:before,
+                    &:after {
+                        top: 25%
+                    }
+                }
+            }
+
+            .body-base {
+                top: 0;
+                width: 100%;
+            }
+
+            .wheel {
+                animation: rotateWheels 1s infinite linear;
+                animation-delay: 1.2s;
+            }
+        }
+
+        &:before,
+        &:after {
+            bottom: 0;
+            animation: moveRoad 1s linear infinite;
+            animation-delay: 1.25s;
+        }
+
+    }
+}
+
+@keyframes moveTruck {
+    0% {
+        transform: translateY(0px);
+    }
+
+    80% {
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes moveRoad {
+    100% {
+        left: -100%;
+    }
+}
+
+@keyframes rotateWheels {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/** ---------------- END : Place Order Interaction ------------- */
