@@ -5,8 +5,6 @@ Simple Place Order User Interaction Animation. Uses HTML, CSS, jQuery only.
 
 You can view the live demo in my <a target = "_blank" href = "https://codepen.io/nijinvinodan/pen/xxZQajq">Codepen</a> 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Pw3kJeUSeko" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 ## How to Run
 
 Download entire folder. Open index.html in browser.
